@@ -9,7 +9,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 80px; 
+      scroll-padding-top: 80px; /* Offset for sticky navbar */
     }
 
     body {
@@ -226,7 +226,7 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
 
-   
+    /* Contact + Socials */
     #contact .contact-wrapper {
       display: flex;
       flex-direction: column;
@@ -247,44 +247,107 @@
       justify-content: center;
     }
 
-   
+    /* Ensure the anchor itself does not stretch the image */
     .social-links a {
-      display: inline-block; 
+      display: inline-block; /* Inline block ensures no stretching */
     }
 
-    
+    /* Explicitly set both size and ensure no scaling */
     .social-links a img {
-      width: 21px !important; 
-      height: 21px !important; 
-      max-width: 21px !important;  
-      max-height: 21px !important; 
+      width: 21px !important; /* Ensure fixed size */
+      height: 21px !important; /* Ensure fixed size */
+      max-width: 21px !important;  /* Ensure no larger sizes */
+      max-height: 21px !important; /* Ensure no larger sizes */
       transition: transform 0.3s ease, filter 0.3s ease;
       filter: brightness(0.8);
-      object-fit: contain; 
+      object-fit: contain; /* Maintain the aspect ratio */
       display: block;
       margin: 0 auto;
     }
 
-    
+    /* Ensure that the parent does not force it to resize */
     .social-links {
       display: flex;
-      justify-content: center; 
+      justify-content: center; /* Center all icons */
       gap: 20px;
     }
+    @media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+    gap: 10px;
+  }
+
+  .nav-links a,
+  .nav-links .btn-resume,
+  .nav-links .contact-info {
+    width: 100%;
+    text-align: left;
+  }
+
+  .navbar .menu-toggle {
+    display: block;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: white;
+    align-self: flex-end;
+  }
+
+  .navbar.expanded .nav-links {
+    display: flex;
+  }
+
+  .social-links {
+    justify-content: flex-start;
+  }
+}
+/* By default, hide hamburger on desktop */
+.hamburger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Show hamburger on smaller screens */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #0e1a2b; /* optional: background for mobile menu */
+    width: 100%;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+}
 
   </style>
 </head>
 <body>
 
-
+<!-- HERO SECTION -->
 <div class="hero" id="hero">
   <h1>Aryan Raj Singh</h1>
   <p>Software Developer</p>
 </div>
 
-
+<!-- NAVBAR -->
 <div class="navbar" id="navbar">
   <h2>Aryan Raj Singh</h2>
+  <div class="hamburger" id="hamburger">&#9776;</div>
   <div class="nav-links">
     <a href="#education">Education</a>
     <a href="#skills">Skills</a>
@@ -301,7 +364,7 @@
     </a>
   </div>
 </div>
-
+<!-- MAIN CONTENT -->
 <div id="main-content">
   <section class="section" id="education">
     <h2>Education</h2>
@@ -325,7 +388,7 @@
         </div>
       </div>
   
-      
+      <!-- Frameworks -->
       <div class="skill-group">
         <div class="head">Frameworks</div>
         <div class="children">
@@ -353,7 +416,7 @@
         </div>
       </div>
   
-      
+      <!-- Platforms -->
       <div class="skill-group">
         <div class="head">Platforms</div>
         <div class="children">
@@ -365,7 +428,7 @@
         </div>
       </div>
   
-      
+      <!-- Soft Skills -->
       <div class="skill-group">
         <div class="head">Soft Skills</div>
         <div class="children">
@@ -416,36 +479,42 @@
   &copy; 2025 Aryan Raj Singh. All Rights Reserved.
 </footer>
 
-
+<!-- JavaScript for Scroll & Navbar Transparency -->
 <script>
-  
+  // Navbar scroll effect
   window.addEventListener('scroll', () => {
     const navbar = document.getElementById('navbar');
-    if (window.scrollY > 50) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
   });
 
-  // Auto-scroll to content after 2s
+  // Auto-scroll after 2 seconds
   window.addEventListener('load', () => {
     setTimeout(() => {
       document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' });
     }, 2000);
   });
 
-  
+  // IntersectionObserver for section animations
   const sections = document.querySelectorAll('.section');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('animate');
+        observer.unobserve(entry.target); // Optional: remove once animated
       }
     });
-  }, { threshold: 0.2 });
+  }, { threshold: 0.1 });
 
-  sections.forEach(section => observer.observe(section));
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+
+  // Hamburger toggle for mobile nav
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
 </script>
 
 </body>
