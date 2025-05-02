@@ -9,7 +9,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 80px; /* Offset for sticky navbar */
+      scroll-padding-top: 80px; /
     }
 
     body {
@@ -226,7 +226,7 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
 
-    /* Contact + Socials */
+    
     #contact .contact-wrapper {
       display: flex;
       flex-direction: column;
@@ -247,28 +247,28 @@
       justify-content: center;
     }
 
-    /* Ensure the anchor itself does not stretch the image */
+    
     .social-links a {
-      display: inline-block; /* Inline block ensures no stretching */
+      display: inline-block; 
     }
 
-    /* Explicitly set both size and ensure no scaling */
+    
     .social-links a img {
-      width: 21px !important; /* Ensure fixed size */
-      height: 21px !important; /* Ensure fixed size */
-      max-width: 21px !important;  /* Ensure no larger sizes */
-      max-height: 21px !important; /* Ensure no larger sizes */
+      width: 21px !important; 
+      height: 21px !important; 
+      max-width: 21px !important;  
+      max-height: 21px !important; 
       transition: transform 0.3s ease, filter 0.3s ease;
       filter: brightness(0.8);
-      object-fit: contain; /* Maintain the aspect ratio */
+      object-fit: contain; 
       display: block;
       margin: 0 auto;
     }
 
-    /* Ensure that the parent does not force it to resize */
+    
     .social-links {
       display: flex;
-      justify-content: center; /* Center all icons */
+      justify-content: center; 
       gap: 20px;
     }
     @media (max-width: 768px) {
@@ -309,14 +309,14 @@
     justify-content: flex-start;
   }
 }
-/* By default, hide hamburger on desktop */
+
 .hamburger {
   display: none;
   font-size: 24px;
   cursor: pointer;
 }
 
-/* Show hamburger on smaller screens */
+
 @media (max-width: 768px) {
   .hamburger {
     display: block;
@@ -325,7 +325,7 @@
   .nav-links {
     display: none;
     flex-direction: column;
-    background-color: #0e1a2b; /* optional: background for mobile menu */
+    background-color: #0e1a2b; 
     width: 100%;
   }
 
@@ -337,14 +337,13 @@
   </style>
 </head>
 <body>
-
-<!-- HERO SECTION -->
+  
 <div class="hero" id="hero">
   <h1>Aryan Raj Singh</h1>
   <p>Software Developer</p>
 </div>
 
-<!-- NAVBAR -->
+
 <div class="navbar" id="navbar">
   <h2>Aryan Raj Singh</h2>
   <div class="hamburger" id="hamburger">&#9776;</div>
@@ -364,7 +363,7 @@
     </a>
   </div>
 </div>
-<!-- MAIN CONTENT -->
+
 <div id="main-content">
   <section class="section" id="education">
     <h2>Education</h2>
@@ -378,7 +377,7 @@
   <section class="section" id="skills">
     <h2>Skills</h2>
     <div class="skills-chart">
-      <!-- Languages -->
+      
       <div class="skill-group">
         <div class="head">Languages</div>
         <div class="children">
@@ -388,7 +387,7 @@
         </div>
       </div>
   
-      <!-- Frameworks -->
+      
       <div class="skill-group">
         <div class="head">Frameworks</div>
         <div class="children">
@@ -402,7 +401,7 @@
         </div>
       </div>
   
-      <!-- Tools -->
+      
       <div class="skill-group">
         <div class="head">Tools</div>
         <div class="children">
@@ -416,7 +415,7 @@
         </div>
       </div>
   
-      <!-- Platforms -->
+      
       <div class="skill-group">
         <div class="head">Platforms</div>
         <div class="children">
@@ -428,7 +427,7 @@
         </div>
       </div>
   
-      <!-- Soft Skills -->
+      
       <div class="skill-group">
         <div class="head">Soft Skills</div>
         <div class="children">
@@ -479,15 +478,15 @@
   &copy; 2025 Aryan Raj Singh. All Rights Reserved.
 </footer>
 
-<!-- JavaScript for Scroll & Navbar Transparency -->
+
 <script>
-  // Navbar scroll effect
+  
   window.addEventListener('scroll', () => {
     const navbar = document.getElementById('navbar');
     navbar.classList.toggle('scrolled', window.scrollY > 50);
   });
 
-  // Auto-scroll after 2 seconds
+  // Auto
   window.addEventListener('load', () => {
     setTimeout(() => {
       document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' });
