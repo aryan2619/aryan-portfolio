@@ -493,11 +493,11 @@
     navbar.classList.toggle('scrolled', window.scrollY > 50);
   });
 
-  // Auto
+  
   window.addEventListener('load', () => {
     setTimeout(() => {
       document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' });
-    }, 2000);
+    }, 3000);
   });
 
   // IntersectionObserver for section animations
@@ -506,7 +506,7 @@
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('animate');
-        observer.unobserve(entry.target); // Optional: remove once animated
+        observer.unobserve(entry.target); 
       }
     });
   }, { threshold: 0.1 });
